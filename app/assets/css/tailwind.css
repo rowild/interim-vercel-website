@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: "Poppins";
+	src: url("/fonts/Poppins/Poppins-Thin.ttf") format("truetype");
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("/fonts/Poppins/Poppins-ExtraLight.ttf") format("truetype");
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--surface-body: #f6f6f6;
+	--surface-panel: #ffffff;
+	--surface-muted: #f0f0f0;
+	--surface-overlay: rgba(12, 12, 12, 0.6);
+	--surface-inverse: #0b0b0d;
+	--surface-inverse-elevated: #191919;
+
+	--ink-strong: #1c1c1c;
+	--ink-body: #2b2b2b;
+	--ink-muted: #595959;
+	--ink-soft: #8f8f8f;
+	--ink-subtle: #b5b5b5;
+	--ink-on-dark: #f7f7f7;
+
+	--border-light: #e0e0e0;
+	--border-strong: #2f2f2f;
+
+	--accent-primary: #0F7C7C;
+	--accent-primary-dark: #0A4F55;
+	--accent-primary-soft: rgba(15, 124, 124, 0.12);
+
+	--max-width-content: 72rem;
+	--max-width-wide: 90rem;
+
+	--shadow-soft: 0 40px 70px -50px rgba(0, 0, 0, 0.55);
+	--shadow-ring: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+	--gradient-hero: linear-gradient(180deg, rgba(12, 12, 12, 0.25) 0%, rgba(12, 12, 12, 0.85) 100%);
+}
+
+.dark {
+	--surface-body: var(--surface-inverse);
+	--surface-panel: #111111;
+	--surface-muted: #161616;
+	--surface-overlay: rgba(10, 10, 10, 0.85);
+	--surface-inverse-elevated: #1a1a1a;
+
+	--ink-strong: #f4f4f4;
+	--ink-body: #e6e6e6;
+	--ink-muted: #c8c8c8;
+	--ink-soft: #999999;
+	--ink-subtle: #7a7a7a;
+	--ink-on-dark: #f7f7f7;
+
+	--accent-primary: #15a2a2;
+	--accent-primary-dark: #0f7c7c;
+	--accent-primary-soft: rgba(21, 162, 162, 0.18);
+
+	--border-light: #2a2a2a;
+	--border-strong: #3c3c3c;
+
+	--shadow-soft: 0 30px 70px -45px rgba(0, 0, 0, 0.75);
+}
+
+@theme {
+	--font-display: "Newsreader", serif;
+	--font-sans: "Poppins", sans-serif;
+	--font-body: "Poppins", sans-serif;
+	--font-ui: "Inter", sans-serif;
+
+	--color-background: var(--surface-body);
+	--color-surface: var(--surface-panel);
+	--color-surface-muted: var(--surface-muted);
+	--color-surface-inverse: var(--surface-inverse);
+	--color-surface-inverse-elevated: var(--surface-inverse-elevated);
+
+	--color-ink: var(--ink-body);
+	--color-ink-strong: var(--ink-strong);
+	--color-ink-muted: var(--ink-muted);
+	--color-ink-soft: var(--ink-soft);
+	--color-ink-subtle: var(--ink-subtle);
+	--color-ink-on-dark: var(--ink-on-dark);
+
+	--color-border: var(--border-light);
+	--color-border-strong: var(--border-strong);
+
+	--color-accent: var(--accent-primary);
+	--color-accent-strong: var(--accent-primary-dark);
+	--color-accent-soft: var(--accent-primary-soft);
+
+	--color-overlay: var(--surface-overlay);
+
+	--shadow-app: var(--shadow-soft);
+	--shadow-elevated: 0 24px 60px -40px rgba(0, 0, 0, 0.65);
+	--shadow-inner: var(--shadow-ring);
+
+	--radius-xs: 0.125rem;
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.75rem;
+	--radius-xl: 1.5rem;
+	--radius-2xl: 2rem;
+	--radius-full: 9999px;
+
+	--max-w-content: var(--max-width-content);
+	--max-w-wide: var(--max-width-wide);
+}
+
+@layer base {
+	*, *::before, *::after {
+		@apply border-border;
+	}
+
+	html {
+		color: var(--color-ink);
+		background-color: var(--color-background);
+		font-family: var(--font-sans);
+	}
+
+	body {
+		@apply text-base antialiased;
+		color: var(--color-ink);
+		background-color: var(--color-background);
+		font-weight: 200;
+	}
+
+	::selection {
+		color: var(--surface-inverse);
+		background-color: var(--color-accent);
+	}
+}
+
+@layer components {
+	.app-surface {
+		background-color: var(--color-surface);
+		color: var(--color-ink);
+		box-shadow: var(--shadow-app);
+	}
+
+	.app-surface-muted {
+		background-color: var(--color-surface-muted);
+	}
+
+	.app-border-strong {
+		border-color: var(--color-border-strong);
+	}
+}
+
+@layer utilities {
+	.text-on-dark {
+		color: var(--color-ink-on-dark);
+	}
+
+	.bg-overlay {
+		background: var(--color-overlay);
+	}
+
+	.bg-hero-gradient {
+		background-image: var(--gradient-hero);
+	}
+
+	.ring-accent {
+		box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 60%, transparent);
+	}
+
+	.focus-outline {
+		outline: none;
+		box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 55%, transparent);
+	}
+
+	.max-w-content {
+		max-width: var(--max-width-content);
+	}
+
+	.max-w-wide {
+		max-width: var(--max-width-wide);
+	}
+}

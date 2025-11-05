@@ -1,0 +1,23 @@
+{
+	"mcpServers": {
+		"Ref": {
+			"type": "http",
+			"url": "https://api.ref.tools/mcp?apiKey=ref-a936b0da88f7042e8901"
+		},
+		"chrome-devtools": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"chrome-devtools-mcp@latest"
+			],
+			"env": {}
+		},
+		"directus": {
+			"type": "http",
+			"url": "http://directus:8060/mcp",
+			"headers": {
+				"Authorization": "Bearer iEN5npq4WWEmbERHOBmP77m6G60jAZMw"
+			}
+		}
+	}
+}

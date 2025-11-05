@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Ref__ref_search_documentation",
+      "mcp__Ref__ref_read_url",
+      "Bash(mkdir:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm update:*)",
+      "Bash(curl:*)",
+      "Read(//Users/robertwildling/Desktop/_WWW/_SICKE/**)",
+      "Bash(docker compose:*)",
+      "Bash(pnpm add:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "Ref",
+    "chrome-devtools"
+  ]
+}

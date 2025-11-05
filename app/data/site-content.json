@@ -1,0 +1,332 @@
+{
+  "version": "0.1.0",
+  "locales": {
+    "en": {
+      "meta": {
+        "siteTitle": "German Toro-Perez | Composer",
+        "siteDescription": "Composer.",
+        "keywords": [
+          "German Toro-Perez",
+          "composer",
+          "professor"
+        ]
+      },
+      "navigation": {
+        "primary": [
+          { "id": "home", "label": "Home", "to": "/" },
+          { "id": "about", "label": "About", "to": "/about" },
+          { "id": "work", "label": "Work", "to": "/work" },
+          { "id": "reviews", "label": "Reviews", "to": "/reviews" },
+          { "id": "contact", "label": "Contact", "to": "/contact" }
+        ],
+        "secondary": [
+          { "id": "films", "label": "Films", "to": "/work#films" },
+          { "id": "photos", "label": "Photography", "to": "/photos" },
+          { "id": "blog", "label": "Journal", "to": "/blog" }
+        ]
+      },
+      "home": {
+        "hero": {
+          "title": "German Toro-Perez",
+          "subtitle": "Composer",
+          "slides": [
+            {
+              "id": "hero-frame-3",
+              "image": "/images/gtp_01.jpg",
+              "alt": "",
+              "focus": "-10rem 0rem",
+							"tagline": "",
+							"title": "",
+							"subtitle": ""
+            },
+            {
+              "id": "hero-frame-4",
+              "image": "/images/gtp_04.jpg",
+              "alt": "",
+              "focus": "left top",
+							"tagline": "",
+							"title": "",
+							"subtitle": ""
+            },
+            {
+              "id": "hero-frame-1",
+              "image": "/images/gtp_03.jpg",
+              "alt": "",
+              "focus": "center",
+							"tagline": "",
+							"title": "",
+							"subtitle": ""
+            },
+            {
+              "id": "hero-frame-2",
+              "image": "/images/gtp_02.jpg",
+              "alt": "",
+              "focus": "center center",
+							"tagline": "",
+							"title": "",
+							"subtitle": ""
+            },
+            {
+              "id": "hero-frame-5",
+              "image": "/images/gtp_05.jpg",
+              "alt": "",
+              "focus": "left top",
+							"tagline": "",
+							"title": "",
+							"subtitle": ""
+            }
+          ]
+        },
+        "intro": {
+          "headline": "Stories that resonate",
+          "body": "German Toro-Perez is a Viennese filmmaker and photographer exploring the textures of memory, light, and sound. His award-winning work spans narrative film, documentary, and intimate portraiture—each project a dialogue between observation and imagination."
+        },
+        "featured": {
+          "headline": "Selected projects",
+          "items": [
+            {
+              "id": "alpine-silence",
+              "title": "Alpine Silence",
+              "category": "Short Film",
+              "summary": "A solitary composer returns to the mountains to confront the echoes of his past.",
+              "media": {
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDHzAS9_XDL6k-N9F6dMYG6tDFICcWqG8dHbR06WtNJWHNY5QJtSAR12mTPJdF_aqoxDr1she363LB3tJgtVl_6FuqfUHY9JxiqbqESAqFCO3d2o_lUNeS2dWNzWQ_hzscb7UDMX94HFwXV-Q4MRYPioCIXXic-kRCHPRcFknrzFAwJ-NXS_6to_HwrOWuR-tVybouuAj6nUI_09XAvk-14qZxv8zfP3B2U12QJEpsZDJhRiVbTrjSIX6HAeFJgC9lztdxoTcIGkofF",
+                "alt": "A lone figure stands on a misty mountain ridge at dawn."
+              }
+            },
+            {
+              "id": "metropolis-dreams",
+              "title": "Metropolis Dreams",
+              "category": "Music Video",
+              "summary": "Neon-drenched nocturnes and kinetic choreography in collaboration with Lumen Ensemble.",
+              "media": {
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDHzAS9_XDL6k-N9F6dMYG6tDFICcWqG8dHbR06WtNJWHNY5QJtSAR12mTPJdF_aqoxDr1she363LB3tJgtVl_6FuqfUHY9JxiqbqESAqFCO3d2o_lUNeS2dWNzWQ_hzscb7UDMX94HFwXV-Q4MRYPioCIXXic-kRCHPRcFknrzFAwJ-NXS_6to_HwrOWuR-tVybouuAj6nUI_09XAvk-14qZxv8zfP3B2U12QJEpsZDJhRiVbTrjSIX6HAeFJgC9lztdxoTcIGkofF",
+                "alt": "Abstract shot of neon light trails in a night cityscape."
+              }
+            },
+            {
+              "id": "weaver",
+              "title": "The Weaver",
+              "category": "Documentary",
+              "summary": "Portrait of an artisan collective preserving centuries-old textile techniques.",
+              "media": {
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDHzAS9_XDL6k-N9F6dMYG6tDFICcWqG8dHbR06WtNJWHNY5QJtSAR12mTPJdF_aqoxDr1she363LB3tJgtVl_6FuqfUHY9JxiqbqESAqFCO3d2o_lUNeS2dWNzWQ_hzscb7UDMX94HFwXV-Q4MRYPioCIXXic-kRCHPRcFknrzFAwJ-NXS_6to_HwrOWuR-tVybouuAj6nUI_09XAvk-14qZxv8zfP3B2U12QJEpsZDJhRiVbTrjSIX6HAeFJgC9lztdxoTcIGkofF",
+                "alt": "Close-up portrait of an elderly artisan with intricate details on their face."
+              }
+            }
+          ]
+        },
+        "testimonials": {
+          "headline": "What people say",
+          "quote": "Siegfried's lens reveals the poetry in every frame.",
+          "entries": [
+            {
+              "id": "alex-johnson",
+              "name": "Alex Johnson",
+              "role": "Director, 'Echoes in the Static'",
+              "quote": "Siegfried has an unparalleled eye for detail. He doesn't just capture images; he captures emotion."
+            },
+            {
+              "id": "maria-garcia",
+              "name": "Maria Garcia",
+              "role": "Producer, Lumina Productions",
+              "quote": "The final film exceeded all our expectations, largely due to his stunning cinematography."
+            },
+            {
+              "id": "chen-wei",
+              "name": "Chen Wei",
+              "role": "Art Curator, The Monochrome Gallery",
+              "quote": "A true master of light and shadow. His photographic work tells a profound story in a single frame."
+            }
+          ]
+        }
+      },
+      "about": {
+        "hero": {
+          "title": "About German Toro-Perez",
+          "intro": "Filmmaker and photographer based in Vienna, exploring the interplay of memory, light, and sound.",
+          "portrait": {
+            "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDdhQ5ZkmoJZfzdvaBqxcGJ27DHzFuIda1ojU_EktPbCGUTHEWjgAIVYfWGIZyjUF9DF7HdSGcE1cEGd_TYSpcUBvzLTRMEuKf2yFBgo0uWWvrkJtwyX_vgJ8YIpGRWgGQvDagn8EOgOfLjLnuA1uuZfLdFHu0A_8GoztgLhyB-eARILqeZNak2TMqyFc1f_FyQEXjG8JrqpqzRrV2rLN5gCGc4SFrS9-5vjCKnt1Qp7DNd88JxsnDpsbYh1tJ8aTy7EVUKcRYJ4h6s",
+            "alt": "Black and white portrait of German Toro-Perez gazing off camera."
+          }
+        },
+        "biography": [
+          "Raised in the Austrian Alps, German Toro-Perez developed an early fascination for the interplay between natural light and human stories.",
+          "After studying cinematography in Vienna, he forged a career across Europe directing independent films and photographing artists, designers, and musicians.",
+          "His work combines documentary sensitivity with bold, graphic compositions, resulting in immersive visual narratives."
+        ],
+        "highlights": [
+          { "id": "honors", "label": "Awards", "items": ["Sundance Film Festival – Grand Jury Prize Nominee (2023)", "Berlinale Silver Bear (2020)", "Cannes Un Certain Regard (2018)"] },
+          { "id": "collaborations", "label": "Collaborations", "items": ["Austrian National Theatre", "Vienna State Opera", "Lumen Ensemble"] }
+        ],
+        "values": {
+          "headline": "Approach",
+          "items": [
+            {
+              "id": "narrative",
+              "title": "Narrative first",
+              "description": "Every frame is guided by story—emotional clarity over spectacle."
+            },
+            {
+              "id": "collaboration",
+              "title": "Collaboration",
+              "description": "From intimate crews to large productions, dialogue fuels his process."
+            },
+            {
+              "id": "craft",
+              "title": "Craft",
+              "description": "Analog discipline meets digital innovation to serve the project."
+            }
+          ]
+        }
+      },
+      "work": {
+        "headline": "Work",
+        "intro": "Selected films and photography projects spanning narrative, documentary, and commercial collaborations.",
+        "filters": [
+          { "id": "all", "label": "All" },
+          { "id": "film", "label": "Film" },
+          { "id": "photo", "label": "Photography" },
+          { "id": "commercial", "label": "Commercial" }
+        ],
+        "items": [
+          {
+            "id": "echoes-valley",
+            "title": "Echoes in the Valley",
+            "type": "Short Film",
+            "year": 2024,
+            "summary": "A meditation on solitude, loss, and the resonance of alpine landscapes.",
+            "media": {
+              "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDHzAS9_XDL6k-N9F6dMYG6tDFICcWqG8dHbR06WtNJWHNY5QJtSAR12mTPJdF_aqoxDr1she363LB3tJgtVl_6FuqfUHY9JxiqbqESAqFCO3d2o_lUNeS2dWNzWQ_hzscb7UDMX94HFwXV-Q4MRYPioCIXXic-kRCHPRcFknrzFAwJ-NXS_6to_HwrOWuR-tVybouuAj6nUI_09XAvk-14qZxv8zfP3B2U12QJEpsZDJhRiVbTrjSIX6HAeFJgC9lztdxoTcIGkofF",
+              "alt": "Foggy forest road captured from above."
+            }
+          },
+          {
+            "id": "coastal-whispers",
+            "title": "Coastal Whispers",
+            "type": "Photo Series",
+            "year": 2023,
+            "summary": "Muted seascapes tracing the liminal space between tide and memory.",
+            "media": {
+              "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDHzAS9_XDL6k-N9F6dMYG6tDFICcWqG8dHbR06WtNJWHNY5QJtSAR12mTPJdF_aqoxDr1she363LB3tJgtVl_6FuqfUHY9JxiqbqESAqFCO3d2o_lUNeS2dWNzWQ_hzscb7UDMX94HFwXV-Q4MRYPioCIXXic-kRCHPRcFknrzFAwJ-NXS_6to_HwrOWuR-tVybouuAj6nUI_09XAvk-14qZxv8zfP3B2U12QJEpsZDJhRiVbTrjSIX6HAeFJgC9lztdxoTcIGkofF",
+              "alt": "Deserted beach with gentle waves under a grey sky."
+            }
+          }
+        ]
+      },
+      "reviews": {
+        "headline": "Praise",
+        "filterLabel": "Filter by",
+        "segments": [
+          {
+            "id": "press",
+            "label": "Press",
+            "entries": [
+              {
+                "id": "variety",
+                "source": "Variety",
+                "date": "June 2023",
+                "quote": "A cinematic triumph. Ortner crafts narratives that are visually stunning and emotionally resonant."
+              }
+            ]
+          },
+          {
+            "id": "clients",
+            "label": "Clients",
+            "entries": [
+              {
+                "id": "john-doe",
+                "source": "John Doe, Actor",
+                "date": "March 2023",
+                "quote": "Working with Siegfried was inspiring. His passion elevates everyone on set."
+              }
+            ]
+          }
+        ],
+        "closing": "Let's create something remarkable."
+      },
+      "contact": {
+        "headline": "Get in touch",
+        "intro": "For project inquiries and collaborations, reach out through the form or email directly.",
+        "address": {
+          "label": "Studio",
+          "body": "Vienna, Austria"
+        },
+        "email": {
+          "label": "Email",
+          "value": "hello@siegfriedortner.com"
+        },
+        "form": {
+          "nameLabel": "Name",
+          "emailLabel": "Email",
+          "messageLabel": "Message",
+          "submitLabel": "Send Message",
+          "successMessage": "Thank you for reaching out. We'll get back to you soon.",
+          "errorMessage": "Something went wrong. Please try again or email directly."
+        }
+      },
+      "social": {
+        "profiles": [
+          {
+            "id": "instagram",
+            "label": "Instagram",
+            "handle": "@siegfriedortner",
+            "url": "https://www.instagram.com/siegfriedortner/"
+          },
+          {
+            "id": "vimeo",
+            "label": "Vimeo",
+            "handle": "German Toro-Perez",
+            "url": "https://vimeo.com/"
+          },
+          {
+            "id": "youtube",
+            "label": "YouTube",
+            "handle": "@siegfriedortner1598",
+            "url": "https://www.youtube.com/@siegfriedortner1598"
+          },
+          {
+            "id": "linkedin",
+            "label": "LinkedIn",
+            "handle": "German Toro-Perez",
+            "url": "https://www.linkedin.com/"
+          }
+        ]
+      },
+      "footer": {
+        "tagline": "Filmmaker & photographer crafting cinematic stories.",
+        "legal": {
+          "copyright": "© 2024 German Toro-Perez. All rights reserved.",
+          "imprint": { "label": "Imprint", "to": "/impressum" },
+          "privacy": { "label": "Privacy", "to": "/privacy" }
+        },
+        "navigation": [
+          { "id": "footer-home", "label": "Home", "to": "/" },
+          { "id": "footer-about", "label": "About", "to": "/about" },
+          { "id": "footer-videos", "label": "Videos", "to": "/work#films" },
+          { "id": "footer-reviews", "label": "Reviews", "to": "/reviews" },
+          { "id": "footer-contact", "label": "Contact", "to": "/contact" }
+        ],
+        "services": [
+          "Cinematography",
+          "Direction",
+          "Portrait Photography",
+          "Documentary Film"
+        ]
+      }
+    },
+    "de": {
+      "meta": {
+        "siteTitle": "German Toro-Perez | Filmemacher & Fotograf",
+        "siteDescription": "Filmemacher und Fotograf aus Wien. Geschichten in Licht, Klang und Bewegung.",
+        "keywords": [
+          "German Toro-Perez",
+          "Filmemacher",
+          "Fotograf",
+          "Kamera",
+          "Erzählkunst"
+        ]
+      }
+    }
+  }
+}

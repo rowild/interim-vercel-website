@@ -1,0 +1,8 @@
+# Nuxt Build Output
+.nuxt/
+.nitro/
+.cache/
+.output/
+dist/
+node_modules
+_bu_mcp.json
