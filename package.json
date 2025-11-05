@@ -14,8 +14,7 @@
 		"postinstall": "nuxt prepare",
 		"typecheck": "nuxt typecheck",
 		"lint": "eslint --cache .",
-		"format": "prettier --write \"**/*.{md,y?(a)ml,json,vue}\"",
-		"generate:types": "node ./scripts/generate-types.js"
+		"format": "prettier --write \"**/*.{md,y?(a)ml,json,vue}\""
 	},
 	"devDependencies": {
 		"@directus/types": "13.2.3",

@@ -4,7 +4,7 @@ const preloadMarkup = `
 		<div class="hero-loader__ring">
 			<span class="sr-only">Loading intro</span>
 		</div>
-		<p>Building Experience</p>
+		<p>...composing Intermezzo...</p>
 	</div>
 </div>
 `.trim();
