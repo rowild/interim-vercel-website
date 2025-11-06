@@ -540,7 +540,7 @@ onBeforeUnmount(() => {
 					style="opacity:0"
 			>
 					<div class="flex w-full flex-col items-stretch md:w-2/3">
-						<div class="ml-auto flex w-full flex-col gap-0 rounded-md border border-white/15 bg-[color:rgba(8,15,20,0.25)] p-6 text-left text-on-dark backdrop-blur-2xl shadow-[0_45px_90px_-50px_rgba(0,0,0,0.85)] md:min-h-[66vh] md:gap-10 md:p-12"
+						<div class="ml-auto flex w-full flex-col gap-0 rounded-md border border-white/15 bg-[rgba(8,15,20,0.25)] p-6 text-left text-on-dark backdrop-blur-2xl shadow-[0_45px_90px_-50px_rgba(0,0,0,0.85)] md:min-h-[66vh] md:gap-10 md:p-12"
 						>
 							<button
 								type="button"
@@ -555,14 +555,14 @@ onBeforeUnmount(() => {
 							</button>
 
 							<div class="flex flex-col md:flex-1">
-								<h1 class="font-display text-4xl font-semibold tracking-[0.025em] text-[#0F7C7C] leading-[1.08] sm:text-6xl sm:leading-tight">
+								<h1 class="font-display text-2xl font-semibold tracking-[0.025em] text-[#0F7C7C] leading-[1.08] sm:text-6xl sm:leading-tight">
 									Intermezzo
 								</h1>
 
-								<div class="overflow-hidden sm:!h-auto sm:!opacity-100"
+								<div class="overflow-hidden sm:h-auto! sm:opacity-100!"
 									:class="infoCollapsed ? 'h-0 opacity-0' : 'h-auto opacity-100'"
 								>
-									<p class="mt-4 text-base leading-[1.85rem] text-on-dark/80 sm:mt-8 sm:text-xl sm:leading-[2.5rem]">
+									<p class="mt-4 text-base leading-[1.85rem] text-on-dark/80 sm:mt-8 sm:text-xl sm:leading-10">
 										Esteemed visitor, the site is presently undergoing a comprehensive rebuild. While the new experience takes shape, you can reach me via the contact details and consult the forthcoming concert schedule through the panels below. I appreciate your patience and continued interest.
 									</p>
 								</div>
