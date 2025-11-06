@@ -36,8 +36,8 @@ interface SlideTimelines {
 
 const slideTimelines = new Map<number, SlideTimelines>();
 
-const contactEmail = 'german.toro-perez@zhdk.ch';
-const contactEmailHref = 'mailto:german.toro-perez@zhdk.ch';
+const contactEmail = 'toroperez@aon.at';
+const contactEmailHref = 'mailto:toroperez@aon.at';
 const contactPhone = '+41 43 446 55 01';
 const contactPhoneHref = 'tel:+41434465501';
 const contactWebsite = 'https://www.toro-perez.com';

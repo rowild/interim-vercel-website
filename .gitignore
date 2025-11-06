@@ -6,3 +6,5 @@
 dist/
 node_modules
 _bu_mcp.json
+_archive
+_wget
