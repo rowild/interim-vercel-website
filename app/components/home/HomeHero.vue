@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { CalendarDays, HelpCircle, Mail, ChevronDown } from 'lucide-vue-next';
+import { ChevronDown } from 'lucide-vue-next';
 import SplitText from 'gsap/SplitText';
 import { useNuxtApp } from '#app';
-import BaseButton from '~/components/base/BaseButton.vue';
 import { objectPositionFor } from '~/utils/objectPosition';
 import { waitForDelay } from '~/utils/delay';
 import type { HeroContent, HeroElements, HeroSetup, HeroSlide } from '~/types';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '~/components/ui/dialog';
 
 const props = defineProps<{ content?: HeroContent }>();
 
@@ -30,17 +28,11 @@ interface SlideTimelines {
 	tagline: gsap.core.Timeline | null;
 	title: gsap.core.Timeline | null;
 	subtitle: gsap.core.Timeline | null;
-	cta: gsap.core.Timeline | null;
 	figure: gsap.core.Timeline | null;
 }
 
 const slideTimelines = new Map<number, SlideTimelines>();
 
-const contactEmail = 'toroperez@aon.at';
-const contactEmailHref = 'mailto:toroperez@aon.at';
-const contactPhone = '+41 43 446 55 01';
-const contactPhoneHref = 'tel:+41434465501';
-const contactWebsite = 'https://www.toro-perez.com';
 
 // Hero Preloader: show / hide
 const showHeroPreloader = () => {
@@ -95,7 +87,6 @@ const createTimelinesForSlide = (slideIndex: number) => {
 	const taglineP = contentWrapper?.querySelector<HTMLElement>('p.text-xs');
 	const titleH1 = contentWrapper?.querySelector<HTMLElement>('h1');
 	const subtitleP = contentWrapper?.querySelector<HTMLElement>('p.max-w-xl');
-	const ctaButtons = contentWrapper?.querySelectorAll<HTMLElement>('a[href]');
 
 	// CRITICAL: Explicitly set ALL child elements to opacity: 0 BEFORE creating timelines
 	// This ensures no GSAP side effects from timeline creation can make elements visible
@@ -107,9 +98,6 @@ const createTimelinesForSlide = (slideIndex: number) => {
 	if (taglineP) gsap.set(taglineP, { opacity: 0 });
 	if (titleH1) gsap.set(titleH1, { opacity: 0 });
 	if (subtitleP) gsap.set(subtitleP, { opacity: 0 });
-	if (ctaButtons && ctaButtons.length > 0) {
-		gsap.set(Array.from(ctaButtons), { opacity: 0 });
-	}
 
 	// Create timelines object
 	const timelines: SlideTimelines = {
@@ -118,7 +106,6 @@ const createTimelinesForSlide = (slideIndex: number) => {
 		tagline: null,
 		title: null,
 		subtitle: null,
-		cta: null,
 		figure: null,
 	};
 
@@ -203,18 +190,6 @@ const createTimelinesForSlide = (slideIndex: number) => {
 			);
 			timelines.subtitle = tl;
 		}
-	}
-
-	// CTA buttons timeline
-	if (ctaButtons && ctaButtons.length > 0) {
-		const tl = gsap.timeline({ paused: true });
-		tl.fromTo(
-			Array.from(ctaButtons),
-			{ opacity: 0, y: 24 },
-			{ opacity: 1, y: 0, duration: 0.45, stagger: 0.08 },
-			0
-		);
-		timelines.cta = tl;
 	}
 
 	// Figure timeline - use .set() + .to() to ensure figure starts at opacity: 0
@@ -445,11 +420,6 @@ const playIntroTimeline = () => {
 		master.add(firstSlideTimelines.subtitle.play(), '-=0.35');
 	}
 
-	// 11. CTA buttons (if exists)
-	if (firstSlideTimelines.cta) {
-		master.add(firstSlideTimelines.cta.play(), '-=0.2');
-	}
-
 	introTimeline.value = master;
 	introPlayed.value = true;
 
@@ -547,7 +517,7 @@ onBeforeUnmount(() => {
 								class="toggle-info absolute right-6 top-6 z-10 flex items-center justify-center text-on-dark transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent sm:hidden"
 								@click="toggleCollapse"
 								:aria-expanded="!infoCollapsed"
-								aria-label="Toggle construction information"
+								aria-label="Toggle information"
 							>
 								<ChevronDown :size="24" :stroke-width="2" class="text-white drop-shadow-lg transition-transform duration-300"
 									:class="infoCollapsed ? '' : 'rotate-180'"
@@ -563,116 +533,13 @@ onBeforeUnmount(() => {
 									:class="infoCollapsed ? 'h-0 opacity-0' : 'h-auto opacity-100'"
 								>
 									<p class="mt-4 text-base leading-[1.85rem] text-on-dark/80 sm:mt-8 sm:text-xl sm:leading-10">
-										Esteemed visitor, the site is presently undergoing a comprehensive rebuild. While the new experience takes shape, you can reach me via the contact details and consult the forthcoming concert schedule through the panels below. I appreciate your patience and continued interest.
+										Dear visitors,<br>
+										my website toro-perez.com is currently unavailable due to the insolvency of my hosting provider. I am working to bring the website back online as soon as possible. If you have any questions, please contact me at toroperez [at] aon.at.
 									</p>
-								</div>
-							</div>
-
-							<div class="overflow-hidden sm:!h-auto sm:!opacity-100"
-								:class="infoCollapsed ? 'h-0 opacity-0' : 'h-auto opacity-100'"
-							>
-								<div class="mt-6 flex flex-wrap items-end gap-4 sm:mt-0 sm:gap-6">
-								<Dialog>
-									<DialogTrigger as-child>
-										<BaseButton
-											id="hero-contact"
-											variant="secondary"
-											size="lg"
-											:custom-icon="Mail"
-											class="button-hide-label-mobile mobile-button sm:px-8 sm:py-3"
-											label="Contact"
-										/>
-								</DialogTrigger>
-								<DialogContent class="mx-auto flex h-[90vh] max-h-[90vh] w-[92%] max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[rgba(8,12,16,0.92)] px-6 py-10 text-left text-on-dark sm:px-10 sm:py-12">
-									<DialogHeader class="border-b border-[rgba(15,124,124,0.4)] pb-6">
-										<DialogTitle class="text-3xl font-semibold leading-snug">Contact Information</DialogTitle>
-										<DialogDescription class="text-on-dark/75 text-lg leading-relaxed">
-											I remain available for correspondence throughout this redevelopment.
-										</DialogDescription>
-									</DialogHeader>
-									<div class="modal-body flex-1 overflow-y-auto py-6 pr-2 text-on-dark/80 text-lg leading-relaxed">
-										<p>
-											<span class="font-semibold text-on-dark">Phone:</span>
-											<a :href="contactPhoneHref" class="ml-2 underline decoration-white/30 underline-offset-4 hover:decoration-white">
-												{{ contactPhone }}
-											</a>
-										</p>
-										<p class="mt-4">
-											<span class="font-semibold text-on-dark">Email:</span>
-											<a :href="contactEmailHref" class="ml-2 underline decoration-white/30 underline-offset-4 hover:decoration-white">
-												{{ contactEmail }}
-											</a>
-										</p>
-										<p class="mt-4">
-											<span class="font-semibold text-on-dark">Website:</span>
-											<span class="ml-2">{{ contactWebsite }} <span class="text-on-dark/60">(Temporarily offline)</span></span>
-										</p>
-									</div>
-									<DialogFooter class="mt-0 flex justify-end border-t border-[rgba(15,124,124,0.4)] pt-6">
-										<DialogClose as-child>
-											<BaseButton id="hero-contact-close" variant="secondary" size="lg" label="Close" class="w-auto" />
-										</DialogClose>
-									</DialogFooter>
-								</DialogContent>
-							</Dialog>
-
-							<Dialog>
-								<DialogTrigger as-child>
-									<BaseButton
-										id="hero-calendar"
-										variant="secondary"
-										size="lg"
-										:custom-icon="CalendarDays"
-										class="button-hide-label-mobile mobile-button sm:px-8 sm:py-3"
-										label="Upcoming Concerts"
-									/>
-									</DialogTrigger>
-								<DialogContent class="mx-auto flex h-[90vh] max-h-[90vh] w-[92%] max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[rgba(8,12,16,0.92)] px-6 py-10 text-left text-on-dark sm:px-10 sm:py-12">
-									<DialogHeader class="border-b border-[rgba(15,124,124,0.4)] pb-6">
-										<DialogTitle class="text-3xl font-semibold leading-snug">Upcoming Concert Dates</DialogTitle>
-									</DialogHeader>
-									<div class="modal-body flex-1 overflow-y-auto py-6 pr-2 text-on-dark/80 text-lg leading-relaxed">
-										<p>Coming soon.</p>
-									</div>
-									<DialogFooter class="mt-0 flex justify-end border-t border-[rgba(15,124,124,0.4)] pt-6">
-										<DialogClose as-child>
-											<BaseButton id="hero-calendar-close" variant="secondary" size="lg" label="Close" class="w-auto" />
-										</DialogClose>
-									</DialogFooter>
-								</DialogContent>
-							</Dialog>
-
-							<Dialog>
-								<DialogTrigger as-child>
-									<BaseButton
-										id="hero-rebuild"
-										variant="secondary"
-										size="lg"
-										:custom-icon="HelpCircle"
-										class="button-hide-label-mobile mobile-button sm:px-8 sm:py-3"
-										label="Why this rebuild?"
-									/>
-									</DialogTrigger>
-								<DialogContent class="mx-auto flex h-[90vh] max-h-[90vh] w-[92%] max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[rgba(8,12,16,0.92)] px-6 py-10 text-left text-on-dark sm:px-10 sm:py-12">
-									<DialogHeader class="border-b border-[rgba(15,124,124,0.4)] pb-6">
-										<DialogTitle class="text-3xl font-semibold leading-snug">About the Rebuild</DialogTitle>
-										<DialogDescription class="text-on-dark/75 text-lg leading-relaxed">
-											This overhaul will better reflect current projects and research activities.
-										</DialogDescription>
-									</DialogHeader>
-									<div class="modal-body flex-1 overflow-y-auto py-6 pr-2 text-on-dark/80 text-lg leading-relaxed">
-										<p>
-											The forthcoming design will offer clearer access to scores, recordings, and archival documentation, complemented by multilingual resources for presenters and scholars.
-										</p>
-										<p class="mt-4">Your patience during this transition is sincerely appreciated.</p>
-									</div>
-									<DialogFooter class="mt-0 flex justify-end border-t border-[rgba(15,124,124,0.4)] pt-6">
-										<DialogClose as-child>
-											<BaseButton id="hero-rebuild-close" variant="secondary" size="lg" label="Close" class="w-auto" />
-										</DialogClose>
-									</DialogFooter>
-								</DialogContent>
-							</Dialog>
+									<p class="mt-4 text-base leading-[1.85rem] text-on-dark/80 sm:mt-8 sm:text-xl sm:leading-10">
+										Liebe Besucherinnen und Besucher,<br>
+										meine Website toro-perez.com ist aufgrund der Insolvenz des Hosting-Anbieters derzeit nicht erreichbar. Ich arbeite daran, die Website so schnell wie möglich wieder online zu bringen. Bei Fragen kontaktieren Sie mich bitte unter toroperez [at] aon.at.
+									</p>
 								</div>
 							</div>
 						</div>
@@ -683,52 +550,3 @@ onBeforeUnmount(() => {
 	</section>
 </template>
 
-<style>
-.modal-body {
-	scrollbar-width: thin;
-	scrollbar-color: rgba(15, 124, 124, 0.65) transparent;
-}
-
-.modal-body::-webkit-scrollbar {
-	width: 6px;
-}
-
-.modal-body::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-.modal-body::-webkit-scrollbar-thumb {
-	background: rgba(15, 124, 124, 0.65);
-	border-radius: 9999px;
-}
-
-.modal-body::-webkit-scrollbar-thumb:hover {
-	background: rgba(15, 124, 124, 0.8);
-}
-
-@media (max-width: 640px) {
-	.button-hide-label-mobile > span > span:last-child {
-		display: none;
-	}
-
-	.mobile-button {
-		height: 2.75rem;
-		padding: 0.5rem;
-	}
-
-	.mobile-button > span {
-		gap: 0;
-		justify-content: center;
-		width: 100%;
-	}
-
-	.mobile-button svg {
-		width: 1.75rem !important;
-		height: 1.75rem !important;
-	}
-
-	.mobile-button > span > svg:first-child {
-		margin-right: 0 !important;
-	}
-}
-</style>
