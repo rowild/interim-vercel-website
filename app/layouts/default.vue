@@ -39,6 +39,5 @@ useSeoMeta({
 			<NuxtPage />
 		</main>
 
-		<SiteFooter :footer="footerContent" :social="socialProfiles" />
 	</div>
 </template>

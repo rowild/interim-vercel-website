@@ -11,20 +11,6 @@
           "professor"
         ]
       },
-      "navigation": {
-        "primary": [
-          { "id": "home", "label": "Home", "to": "/" },
-          { "id": "about", "label": "About", "to": "/about" },
-          { "id": "work", "label": "Work", "to": "/work" },
-          { "id": "reviews", "label": "Reviews", "to": "/reviews" },
-          { "id": "contact", "label": "Contact", "to": "/contact" }
-        ],
-        "secondary": [
-          { "id": "films", "label": "Films", "to": "/work#films" },
-          { "id": "photos", "label": "Photography", "to": "/photos" },
-          { "id": "blog", "label": "Journal", "to": "/blog" }
-        ]
-      },
       "home": {
         "hero": {
           "title": "German Toro-Perez",

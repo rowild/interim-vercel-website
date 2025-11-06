@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { CalendarDays, HelpCircle, Mail } from 'lucide-vue-next';
+import { CalendarDays, HelpCircle, Mail, ChevronDown } from 'lucide-vue-next';
 import SplitText from 'gsap/SplitText';
 import { useNuxtApp } from '#app';
 import BaseButton from '~/components/base/BaseButton.vue';
@@ -21,6 +21,7 @@ const isHeroReady = ref(false);
 const isPreparingHero = ref(false);
 const introPlayed = ref(false);
 const hasMounted = ref(false);
+const infoCollapsed = ref(true);
 
 // Store timelines per slide (each slide has its own set of timelines)
 interface SlideTimelines {
@@ -485,6 +486,11 @@ onMounted(() => {
 	void prepareHero();
 });
 
+// Toggle collapse
+const toggleCollapse = () => {
+	infoCollapsed.value = !infoCollapsed.value;
+};
+
 onBeforeUnmount(() => {
 	introTimeline.value?.kill();
 	introTimeline.value = null;
@@ -530,33 +536,55 @@ onBeforeUnmount(() => {
 				</div>
 
 				<div
-					class="relative z-10 mx-auto flex h-full w-full max-w-content items-end justify-end px-6 pb-20 pt-24"
+					class="relative z-10 mx-auto flex h-full w-full max-w-content items-end justify-end px-4 pb-4 pt-10 sm:px-6 sm:pb-20 sm:pt-24"
 					style="opacity:0"
-				>
+			>
 					<div class="flex w-full flex-col items-stretch md:w-2/3">
-					<div class="ml-auto flex w-full flex-col gap-10 rounded-md border border-white/15 bg-[color:rgba(8,15,20,0.25)] p-12 text-left text-on-dark backdrop-blur-2xl shadow-[0_45px_90px_-50px_rgba(0,0,0,0.85)] md:min-h-[66vh]">
-						<div class="space-y-8">
-							<h1 class="font-display text-5xl font-semibold tracking-[0.04em] text-[#0F7C7C] leading-tight sm:text-6xl sm:leading-tight">
-								Intermezzo
-							</h1>
-							<p class="text-lg leading-[2.4rem] text-on-dark/80 sm:text-xl sm:leading-[2.5rem]">
-								Esteemed visitor, the site is presently undergoing a comprehensive rebuild. While the new experience takes shape, you can reach me via the contact details and consult the forthcoming concert schedule through the panels below. I appreciate your patience and continued interest.
-							</p>
-						</div>
+						<div class="ml-auto flex w-full flex-col gap-0 rounded-md border border-white/15 bg-[color:rgba(8,15,20,0.25)] p-6 text-left text-on-dark backdrop-blur-2xl shadow-[0_45px_90px_-50px_rgba(0,0,0,0.85)] md:min-h-[66vh] md:gap-10 md:p-12"
+						>
+							<button
+								type="button"
+								class="toggle-info absolute right-6 top-6 z-10 flex items-center justify-center text-on-dark transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent sm:hidden"
+								@click="toggleCollapse"
+								:aria-expanded="!infoCollapsed"
+								aria-label="Toggle construction information"
+							>
+								<ChevronDown :size="24" :stroke-width="2" class="text-white drop-shadow-lg transition-transform duration-300"
+									:class="infoCollapsed ? '' : 'rotate-180'"
+								/>
+							</button>
 
-						<div class="mt-12 flex flex-1 flex-wrap items-end gap-6">
-							<Dialog>
-								<DialogTrigger as-child>
-									<BaseButton
-										id="hero-contact"
-										variant="secondary"
-										size="lg"
-										:custom-icon="Mail"
-										label="Contact"
-									/>
+							<div class="flex flex-col md:flex-1">
+								<h1 class="font-display text-4xl font-semibold tracking-[0.025em] text-[#0F7C7C] leading-[1.08] sm:text-6xl sm:leading-tight">
+									Intermezzo
+								</h1>
+
+								<div class="overflow-hidden sm:!h-auto sm:!opacity-100"
+									:class="infoCollapsed ? 'h-0 opacity-0' : 'h-auto opacity-100'"
+								>
+									<p class="mt-4 text-base leading-[1.85rem] text-on-dark/80 sm:mt-8 sm:text-xl sm:leading-[2.5rem]">
+										Esteemed visitor, the site is presently undergoing a comprehensive rebuild. While the new experience takes shape, you can reach me via the contact details and consult the forthcoming concert schedule through the panels below. I appreciate your patience and continued interest.
+									</p>
+								</div>
+							</div>
+
+							<div class="overflow-hidden sm:!h-auto sm:!opacity-100"
+								:class="infoCollapsed ? 'h-0 opacity-0' : 'h-auto opacity-100'"
+							>
+								<div class="mt-6 flex flex-wrap items-end gap-4 sm:mt-0 sm:gap-6">
+								<Dialog>
+									<DialogTrigger as-child>
+										<BaseButton
+											id="hero-contact"
+											variant="secondary"
+											size="lg"
+											:custom-icon="Mail"
+											class="button-hide-label-mobile mobile-button sm:px-8 sm:py-3"
+											label="Contact"
+										/>
 								</DialogTrigger>
-								<DialogContent class="flex h-[90vh] max-h-[90vh] w-full max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[color:rgba(8,12,16,0.92)] px-10 py-12 text-left text-on-dark">
-									<DialogHeader class="border-b border-[color:rgba(15,124,124,0.4)] pb-6">
+								<DialogContent class="mx-auto flex h-[90vh] max-h-[90vh] w-[92%] max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[rgba(8,12,16,0.92)] px-6 py-10 text-left text-on-dark sm:px-10 sm:py-12">
+									<DialogHeader class="border-b border-[rgba(15,124,124,0.4)] pb-6">
 										<DialogTitle class="text-3xl font-semibold leading-snug">Contact Information</DialogTitle>
 										<DialogDescription class="text-on-dark/75 text-lg leading-relaxed">
 											I remain available for correspondence throughout this redevelopment.
@@ -580,9 +608,9 @@ onBeforeUnmount(() => {
 											<span class="ml-2">{{ contactWebsite }} <span class="text-on-dark/60">(Temporarily offline)</span></span>
 										</p>
 									</div>
-									<DialogFooter class="mt-0 border-t border-[color:rgba(15,124,124,0.4)] pt-6 flex justify-start">
+									<DialogFooter class="mt-0 flex justify-end border-t border-[rgba(15,124,124,0.4)] pt-6">
 										<DialogClose as-child>
-											<BaseButton id="hero-contact-close" variant="secondary" size="lg" label="Close" />
+											<BaseButton id="hero-contact-close" variant="secondary" size="lg" label="Close" class="w-auto" />
 										</DialogClose>
 									</DialogFooter>
 								</DialogContent>
@@ -590,24 +618,25 @@ onBeforeUnmount(() => {
 
 							<Dialog>
 								<DialogTrigger as-child>
-										<BaseButton
-											id="hero-calendar"
-											variant="secondary"
-											size="lg"
-											:custom-icon="CalendarDays"
-											label="Upcoming Concerts"
-										/>
+									<BaseButton
+										id="hero-calendar"
+										variant="secondary"
+										size="lg"
+										:custom-icon="CalendarDays"
+										class="button-hide-label-mobile mobile-button sm:px-8 sm:py-3"
+										label="Upcoming Concerts"
+									/>
 									</DialogTrigger>
-								<DialogContent class="flex h-[90vh] max-h-[90vh] w-full max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[color:rgba(8,12,16,0.92)] px-10 py-12 text-left text-on-dark">
-									<DialogHeader class="border-b border-[color:rgba(15,124,124,0.4)] pb-6">
+								<DialogContent class="mx-auto flex h-[90vh] max-h-[90vh] w-[92%] max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[rgba(8,12,16,0.92)] px-6 py-10 text-left text-on-dark sm:px-10 sm:py-12">
+									<DialogHeader class="border-b border-[rgba(15,124,124,0.4)] pb-6">
 										<DialogTitle class="text-3xl font-semibold leading-snug">Upcoming Concert Dates</DialogTitle>
 									</DialogHeader>
 									<div class="modal-body flex-1 overflow-y-auto py-6 pr-2 text-on-dark/80 text-lg leading-relaxed">
 										<p>Coming soon.</p>
 									</div>
-									<DialogFooter class="mt-0 border-t border-[color:rgba(15,124,124,0.4)] pt-6 flex justify-start">
+									<DialogFooter class="mt-0 flex justify-end border-t border-[rgba(15,124,124,0.4)] pt-6">
 										<DialogClose as-child>
-											<BaseButton id="hero-calendar-close" variant="secondary" size="lg" label="Close" />
+											<BaseButton id="hero-calendar-close" variant="secondary" size="lg" label="Close" class="w-auto" />
 										</DialogClose>
 									</DialogFooter>
 								</DialogContent>
@@ -615,16 +644,17 @@ onBeforeUnmount(() => {
 
 							<Dialog>
 								<DialogTrigger as-child>
-										<BaseButton
-											id="hero-rebuild"
-											variant="secondary"
-											size="lg"
-											:custom-icon="HelpCircle"
-											label="Why this rebuild?"
-										/>
+									<BaseButton
+										id="hero-rebuild"
+										variant="secondary"
+										size="lg"
+										:custom-icon="HelpCircle"
+										class="button-hide-label-mobile mobile-button sm:px-8 sm:py-3"
+										label="Why this rebuild?"
+									/>
 									</DialogTrigger>
-								<DialogContent class="flex h-[90vh] max-h-[90vh] w-full max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[color:rgba(8,12,16,0.92)] px-10 py-12 text-left text-on-dark">
-									<DialogHeader class="border-b border-[color:rgba(15,124,124,0.4)] pb-6">
+								<DialogContent class="mx-auto flex h-[90vh] max-h-[90vh] w-[92%] max-w-[60rem] flex-col overflow-hidden border border-white/10 bg-[rgba(8,12,16,0.92)] px-6 py-10 text-left text-on-dark sm:px-10 sm:py-12">
+									<DialogHeader class="border-b border-[rgba(15,124,124,0.4)] pb-6">
 										<DialogTitle class="text-3xl font-semibold leading-snug">About the Rebuild</DialogTitle>
 										<DialogDescription class="text-on-dark/75 text-lg leading-relaxed">
 											This overhaul will better reflect current projects and research activities.
@@ -636,15 +666,16 @@ onBeforeUnmount(() => {
 										</p>
 										<p class="mt-4">Your patience during this transition is sincerely appreciated.</p>
 									</div>
-									<DialogFooter class="mt-0 border-t border-[color:rgba(15,124,124,0.4)] pt-6 flex justify-start">
+									<DialogFooter class="mt-0 flex justify-end border-t border-[rgba(15,124,124,0.4)] pt-6">
 										<DialogClose as-child>
-											<BaseButton id="hero-rebuild-close" variant="secondary" size="lg" label="Close" />
+											<BaseButton id="hero-rebuild-close" variant="secondary" size="lg" label="Close" class="w-auto" />
 										</DialogClose>
 									</DialogFooter>
 								</DialogContent>
 							</Dialog>
+								</div>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -673,5 +704,31 @@ onBeforeUnmount(() => {
 
 .modal-body::-webkit-scrollbar-thumb:hover {
 	background: rgba(15, 124, 124, 0.8);
+}
+
+@media (max-width: 640px) {
+	.button-hide-label-mobile > span > span:last-child {
+		display: none;
+	}
+
+	.mobile-button {
+		height: 2.75rem;
+		padding: 0.5rem;
+	}
+
+	.mobile-button > span {
+		gap: 0;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.mobile-button svg {
+		width: 1.75rem !important;
+		height: 1.75rem !important;
+	}
+
+	.mobile-button > span > svg:first-child {
+		margin-right: 0 !important;
+	}
 }
 </style>
